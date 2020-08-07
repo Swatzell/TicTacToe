@@ -13,4 +13,15 @@
     width: 302px;
     clear: both;
 }
-
+.top {
+    border-bottom: 1px black solid;
+}
+.bottom {
+    border-top: 1px blue solid;
+}
+.left {
+    border-right: 1px yellow solid;
+}
+.right {
+    border-left: 1px green solid;
+}
