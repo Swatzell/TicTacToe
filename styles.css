@@ -19,15 +19,15 @@ cursor: pointer;
 }
 
 .bottom {
-    border-top: 1px blue solid;
+    border-top: 1px black solid;
 cursor: pointer;
 }
 .left {
-    border-right: 1px yellow solid;
+    border-right: 1px black solid;
 cursor: pointer;
 }
 .right {
-    border-left: 1px green solid;
+    border-left: 1px black solid;
 cursor: pointer;
 }
 .center {
