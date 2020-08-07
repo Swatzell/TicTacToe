@@ -9,9 +9,10 @@
 
 }
 .row {
+   clear: both;
     margin: 0 auto;
     width: 302px;
-    clear: both;
+   
 }
 .top {
     border-bottom: 1px black solid;
