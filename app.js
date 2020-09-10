@@ -17,8 +17,9 @@ for (let i = 0; i < cells.length; i++) {
 }
 let currentPlayer = "X"
 let gameOver = false;
+let moveCount = 0;
 
-function cellClicked() {
+function cellClicked(event) {
     if (gameOver) {
         resetGame();
         return;
@@ -27,7 +28,10 @@ function cellClicked() {
     if (event.target.textContent !== "") {
         return;
     };
+    //draws current player
     event.target.textContent = currentPlayer;
+    moveCount++
+    //console.log(moveCount)
     checkWinner();
     togglePlayer();
 
@@ -40,33 +44,35 @@ function togglePlayer() {
         currentPlayer = "X"
     }
 }
-
+//much simpler
 function checkWinner() {
-    if (cells[0].textContent === currentPlayer && cells[1].textContent === currentPlayer && cells[2].textContent === currentPlayer) {
+    if (checkCombo(0, 1, 2)) {
         console.log("WINNER!!!")
         gameOver = true;
-
-    } else if (cells[3].textContent === currentPlayer && cells[4].textContent === currentPlayer && cells[5].textContent === currentPlayer) {
+    } else if (checkCombo(3, 4, 5)) {
         console.log("WINNER!!!")
         gameOver = true;
-    } else if (cells[6].textContent === currentPlayer && cells[7].textContent === currentPlayer && cells[8].textContent === currentPlayer) {
+    } else if (checkCombo(6, 7, 8)) {
         console.log("WINNER!!!")
         gameOver = true;
-    } else if (cells[0].textContent === currentPlayer && cells[3].textContent === currentPlayer && cells[6].textContent === currentPlayer) {
+    } else if (checkCombo(0, 3, 6)) {
         console.log("WINNER!!!")
         gameOver = true;
-    } else if (cells[1].textContent === currentPlayer && cells[4].textContent === currentPlayer && cells[7].textContent === currentPlayer) {
+    } else if (checkCombo(1, 4, 7)) {
         console.log("WINNER!!!")
         gameOver = true;
-    } else if (cells[2].textContent === currentPlayer && cells[5].textContent === currentPlayer && cells[8].textContent === currentPlayer) {
+    } else if (checkCombo(2, 5, 8)) {
         console.log("WINNER!!!")
         gameOver = true;
-    } else if (cells[0].textContent === currentPlayer && cells[4].textContent === currentPlayer && cells[8].textContent === currentPlayer) {
+    } else if (checkCombo(0, 4, 8)) {
         console.log("WINNER!!!")
         gameOver = true;
-    } else if (cells[2].textContent === currentPlayer && cells[4].textContent === currentPlayer && cells[6].textContent === currentPlayer) {
+    } else if (checkCombo(2, 4, 6)) {
         console.log("WINNER!!!")
         gameOver = true;
+    } else if (moveCount === 9) {
+        console.log("Draw!")
+        gameOver = true
     }
 
 }
@@ -77,4 +83,14 @@ function resetGame() {
     }
     currentPlayer = "X";
     gameOver = false;
+    moveCount = 0;
+}
+
+function checkCombo(a, b, c) {
+    if (cells[a].textContent === currentPlayer && cells[b].textContent === currentPlayer && cells[c].textContent === currentPlayer) {
+        return true
+    } else {
+        return false
+
+    }
 }
